@@ -12,8 +12,56 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Naira Shafiqa Afiany | Portfolio",
-  description: "Portfolio of Naira Shafiqa Afiany",
+  metadataBase: new URL("https://nairafiany.com"),
+
+  title: {
+    default: "Naira Shafiqa Afiany | Information Systems Student & Developer",
+    template: "%s | Naira Shafiqa Afiany",
+  },
+  description:
+    "Portfolio of Naira Shafiqa Afiany, a 3rd-year Information Systems student at Universitas Indonesia specialized in Web Development, System Analysis, and AI.",
+
+  keywords: [
+    "Naira Shafiqa Afiany",
+    "Portfolio",
+    "Web Developer",
+    "Next.js",
+    "Universitas Indonesia",
+    "Frontend Developer",
+    "Data Scientist",
+  ],
+
+  authors: [{ name: "Naira Shafiqa Afiany" }],
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: "Hi, I'm Naira! 👋 | Portfolio",
+    description:
+      "Aspiring Developer & Information Systems Student at UI. Check out my portfolio!",
+    url: "https://nairafiany.com",
+    siteName: "Naira Shafiqa Portfolio",
+    images: [
+      {
+        url: "/images/preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Naira Shafiqa Afiany Portfolio Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Naira Shafiqa Afiany | Portfolio",
+    description: "Check out my portfolio!",
+    images: ["/images/preview.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
