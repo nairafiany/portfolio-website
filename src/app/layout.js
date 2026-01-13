@@ -15,7 +15,7 @@ export const metadata = {
   metadataBase: new URL("https://nairafiany.com"),
 
   title: {
-    default: "Naira Shafiqa Afiany | Information Systems Student & Developer",
+    default: "Naira Shafiqa Afiany | Portfolio",
     template: "%s | Naira Shafiqa Afiany",
   },
   description:
@@ -43,7 +43,7 @@ export const metadata = {
       "Aspiring Developer & Information Systems Student at UI. Check out my portfolio!",
 
     url: "https://nairafiany.com",
-    siteName: "Naira Shafiqa Portfolio",
+    siteName: "Naira Shafiqa Afiany",
     images: [
       {
         url: "/images/preview.png",
