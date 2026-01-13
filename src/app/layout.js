@@ -37,7 +37,7 @@ export const metadata = {
   },
 
   icons: {
-    icon: "/n_logo.svg",
+    icon: "/icon.svg",
   },
 
   openGraph: {
