@@ -1,17 +1,30 @@
+import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
 
 export async function POST(req) {
   try {
     const { name, email, message } = await req.json();
 
-    const { error } = await resend.emails.send({
-      from: fromEmail,
-      to: ["naira.afiany@gmail.com"], // Email tujuan (email kamu)
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error("Missing RESEND_API_KEY");
+    }
+
+    const myEmail = process.env.PERSONAL_EMAIL;
+    if (!myEmail) {
+      throw new Error("Missing PERSONAL_EMAIL environment variable");
+    }
+
+    const { data, error } = await resend.emails.send({
+      from: "onboarding@resend.dev",
+
+      to: [myEmail],
+
       subject: `New message from ${name}`,
-      replyTo: email, // 👍 Tambahan bagus: biar kalau di-reply langsung ke pengirim
+
+      reply_to: email,
+
       html: `
         <h3>New Contact Message</h3>
         <p><strong>Name:</strong> ${name}</p>
@@ -22,11 +35,13 @@ export async function POST(req) {
     });
 
     if (error) {
-      return Response.json({ error }, { status: 500 });
+      console.error("Resend API Error:", error);
+      return NextResponse.json({ error }, { status: 500 });
     }
 
-    return Response.json({ success: true });
+    return NextResponse.json({ success: true, data });
   } catch (err) {
-    return Response.json({ error: err.message }, { status: 500 });
+    console.error("Server Error:", err);
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
