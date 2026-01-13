@@ -1,21 +1,13 @@
-/* 1. Devicon Import WAJIB di baris paling pertama */
 @import url("https://cdn.jsdelivr.net/gh/devicon/devicon@latest/devicon.min.css");
-
-/* 2. Import Utama Tailwind v4 */
 @import "tailwindcss";
-
-/* 3. Definisi Tema Tailwind v4 */
-/* Menggunakan @theme untuk mapping variabel font Next.js ke utility Tailwind */
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Mapping warna custom agar bisa dipanggil dg class bg-background dsb (opsional) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
 
-/* 4. CSS Variables (Dark/Light Mode) */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -28,7 +20,6 @@
   }
 }
 
-/* 5. Base Styles */
 body {
   background: var(--background);
   color: var(--foreground);
