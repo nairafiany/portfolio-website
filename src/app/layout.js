@@ -27,8 +27,6 @@ export const metadata = {
     "Web Developer",
     "Next.js",
     "Universitas Indonesia",
-    "Frontend Developer",
-    "Data Scientist",
   ],
 
   authors: [{ name: "Naira Shafiqa Afiany" }],
@@ -39,9 +37,11 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Hi, I'm Naira! 👋 | Portfolio",
+    title: "Naira Shafiqa Afiany",
+
     description:
       "Aspiring Developer & Information Systems Student at UI. Check out my portfolio!",
+
     url: "https://nairafiany.com",
     siteName: "Naira Shafiqa Portfolio",
     images: [
@@ -58,8 +58,8 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Naira Shafiqa Afiany | Portfolio",
-    description: "Check out my portfolio!",
+    title: "Naira Shafiqa Afiany",
+    description: "Aspiring Developer & Information Systems Student at UI.",
     images: ["/images/preview.png"],
   },
 };
