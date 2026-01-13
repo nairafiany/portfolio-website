@@ -36,10 +36,6 @@ export const metadata = {
     follow: true,
   },
 
-  icons: {
-    icon: "/icon.svg",
-  },
-
   openGraph: {
     title: "Naira Shafiqa Afiany",
 
