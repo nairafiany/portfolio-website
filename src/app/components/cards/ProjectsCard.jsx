@@ -7,6 +7,10 @@ import {
   FaFigma,
   FaMobileAlt,
   FaShieldAlt,
+  FaPython,
+  FaBrain,
+  FaGem,
+  FaChartLine,
 } from "react-icons/fa";
 
 const projectsData = [
@@ -16,7 +20,7 @@ const projectsData = [
     description:
       "Food review platform focused on Yogyakarta culinary scene. Platform-based programming utilizing Web & Mobile interfaces.",
     image: "/images/projects/jogjappetite.png",
-    gitUrl: null, // Private / No Link
+    gitUrl: null,
     previewUrl: null,
     tags: ["Mobile", "Web"],
     techStack: [
@@ -32,7 +36,7 @@ const projectsData = [
       "Fitness app design with physical activity & food tracking. Focus on Human–Computer Interaction.",
     image: "/images/projects/elevfit.png",
     gitUrl: null,
-    previewUrl: "https://ristek.link/ElevFit", // Figma/Prototype Link
+    previewUrl: "https://ristek.link/ElevFit",
     tags: ["UI/UX"],
     techStack: [
       { name: "Figma", src: "/stacks/figma.svg" },
@@ -85,7 +89,7 @@ const projectsData = [
     previewUrl: null,
     tags: ["AI", "Web"],
     techStack: [
-      { name: "OpenAI", src: "/stacks/openai_dark.svg" },
+      { name: "OpenAI Platform", src: "/stacks/openai_dark.svg" },
       { name: "Next.js", src: "/stacks/nextjs_icon_dark.svg" },
       { name: "FastAPI", src: "/stacks/fastapi.svg" },
     ],
@@ -111,13 +115,57 @@ const projectsData = [
     title: "Personal Portfolio",
     description:
       "Responsive portfolio website showcasing projects and skills. Built with modern web technologies.",
-    image: null, // Fallback placeholder
+    image: "/images/preview.png",
     gitUrl: "https://github.com/nairafiany/portfolio-website",
     previewUrl: "#",
     tags: ["Web"],
     techStack: [
       { name: "Next.js", src: "/stacks/nextjs_icon_dark.svg" },
       { name: "Tailwind", src: "/stacks/tailwindcss.svg" },
+    ],
+  },
+  {
+    id: 8,
+    title: "Diamond Analytics",
+    description:
+      "Kaggle Final Project for KASDAD. Implemented Classification, Prediction, and Clustering models to estimate diamond prices and visual quality.",
+    image: null,
+    thumbnailIcon: (
+      <FaGem className="w-14 h-14 text-cyan-300/80 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
+    ),
+    gitUrl: null,
+    previewUrl: null,
+    tags: ["Data Science", "AI"],
+    techStack: [
+      {
+        name: "Python",
+        icon: <FaPython className="w-4 h-4 text-yellow-400" />,
+      },
+      {
+        name: "Machine Learning",
+        icon: <FaBrain className="w-4 h-4 text-pink-400" />,
+      },
+    ],
+  },
+  {
+    id: 9,
+    title: "E-Commerce Dashboard",
+    description:
+      "Comprehensive data visualization project analyzing sales funnel, product metrics, and logistics performance using Looker Studio on a 100k+ dataset.",
+    image: "/images/projects/ecomm_dashboard.png",
+    gitUrl: null,
+    previewUrl:
+      "https://lookerstudio.google.com/u/0/reporting/8ef341d2-93cd-4913-96a8-b0f77ba7e4c2/page/Pf5QF",
+    tags: ["Data Analytics", "Visualization"],
+    techStack: [
+      {
+        name: "Looker Studio",
+        icon: <FaChartLine className="w-4 h-4 text-blue-500" />,
+      },
+      {
+        name: "Python",
+        icon: <FaPython className="w-4 h-4 text-yellow-400" />,
+      },
     ],
   },
 ];
@@ -144,12 +192,13 @@ export default function ProjectsCard() {
   const getLinkLabel = (url) => {
     if (url.includes("figma") || url.includes("ristek.link"))
       return "Prototype";
+    if (url.includes("kaggle")) return "Kaggle";
+    if (url.includes("lookerstudio")) return "Dashboard";
     return "Visit";
   };
 
   return (
     <div className="h-full flex flex-col">
-      {/* --- HEADER --- */}
       <div className="shrink-0 mb-6 px-1">
         <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
         <p className="text-gray-400 text-sm mt-1">
@@ -157,7 +206,6 @@ export default function ProjectsCard() {
         </p>
       </div>
 
-      {/* --- LIST CONTAINER (Vertical Scroll) --- */}
       <div
         ref={containerRef}
         className={`flex-1 flex flex-col gap-6 pr-2 pb-32 ${iosScrollbarStyle}`}
@@ -167,7 +215,6 @@ export default function ProjectsCard() {
             key={project.id}
             className="group relative bg-[#181818] border border-white/5 rounded-2xl p-4 flex flex-col sm:flex-row gap-5 hover:border-emerald-500/50 hover:bg-[#1f1f1f] transition-all duration-300"
           >
-            {/* 1. IMAGE SECTION (Left) */}
             <div className="w-full sm:w-64 aspect-video shrink-0 relative rounded-xl overflow-hidden bg-black/50 border border-white/5">
               {project.image ? (
                 <Image
@@ -178,11 +225,10 @@ export default function ProjectsCard() {
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-800 to-black text-gray-500 text-xs font-mono">
-                  No Image
+                  {project.thumbnailIcon ? project.thumbnailIcon : "No Image"}
                 </div>
               )}
 
-              {/* Type Badge (Mobile Only - Overlay) */}
               <div className="absolute top-2 left-2 flex gap-1 sm:hidden">
                 {project.tags.map((tag, i) => (
                   <span
@@ -233,7 +279,6 @@ export default function ProjectsCard() {
                           className="opacity-60 group-hover:opacity-100 transition-opacity"
                         />
                       ) : (
-                        // Render Icon Component if no SRC
                         <div className="opacity-60 group-hover:opacity-100 transition-opacity">
                           {tech.icon}
                         </div>
@@ -246,7 +291,7 @@ export default function ProjectsCard() {
                   ))}
                 </div>
 
-                {/* Action Buttons (Conditional Rendering) */}
+                {/* Action Buttons */}
                 <div className="flex gap-3">
                   {project.gitUrl && (
                     <a
