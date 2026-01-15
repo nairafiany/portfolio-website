@@ -13,7 +13,9 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL("https://nairafiany.com"),
-
+  verification: {
+    google: "S5WbunldhehSeJQ9k55ErCefgIFLibZLfUGQVuMbaGE",
+  },
   title: {
     default: "Naira Shafiqa Afiany | Portfolio",
     template: "%s | Naira Shafiqa Afiany",
