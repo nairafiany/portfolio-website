@@ -29,7 +29,7 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: "/icon",
+        url: "/n_logo.svg",
         type: "image/svg+xml",
       },
     ],
