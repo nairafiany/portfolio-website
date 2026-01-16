@@ -58,7 +58,7 @@ export default function ContactCard() {
   return (
     <div className="w-full h-full flex flex-col md:flex-row gap-6 md:gap-8 items-center justify-start md:justify-center overflow-y-auto custom-scrollbar pb-32 md:pb-0 px-4 pt-16 md:pt-0">
       <div className="w-full md:w-1/3 flex flex-col justify-center text-center md:text-left shrink-0">
-        <h2 className="text-2xl md:text-3xl font-bold mb-2 md:mb-3 text-gray-900 dark:text-white">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2 md:mb-3 text-white">
           Let's Connect
         </h2>
         <p className="text-sm text-gray-500 mb-6 max-w-md mx-auto md:mx-0 leading-relaxed">
@@ -71,7 +71,7 @@ export default function ContactCard() {
             className="group transition-transform hover:scale-110"
             aria-label="Send Email"
           >
-            <div className="p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-full text-emerald-600 hover:bg-emerald-200 dark:hover:bg-emerald-800/50 transition-colors shadow-sm">
+            <div className="p-3 bg-emerald-900/30 rounded-full text-emerald-600 hover:bg-emerald-800/50 transition-colors shadow-sm">
               <FaEnvelope size={22} />
             </div>
           </a>
@@ -81,7 +81,7 @@ export default function ContactCard() {
             className="group transition-transform hover:scale-110"
             aria-label="LinkedIn Profile"
           >
-            <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full text-blue-600 hover:bg-blue-200 dark:hover:bg-blue-800/50 transition-colors shadow-sm">
+            <div className="p-3 bg-blue-900/30 rounded-full text-blue-600 hover:bg-blue-800/50 transition-colors shadow-sm">
               <FaLinkedin size={22} />
             </div>
           </a>
@@ -93,9 +93,9 @@ export default function ContactCard() {
           </p>
 
           <div className="relative flex items-center gap-2">
-            <div className="flex-1 flex items-center gap-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 shadow-sm transition-colors hover:border-emerald-300/50">
+            <div className="flex-1 flex items-center gap-3 bg-white/5 border border-gray-700 rounded-xl px-4 py-3 shadow-sm transition-colors hover:border-emerald-300/50">
               <FaLink className="text-gray-400 text-sm shrink-0" />
-              <span className="text-sm font-mono text-gray-600 dark:text-gray-300 truncate selection:bg-emerald-100 selection:text-emerald-700">
+              <span className="text-sm font-mono text-gray-300 truncate selection:bg-emerald-100 selection:text-emerald-700">
                 nairafiany.com
               </span>
             </div>
@@ -105,7 +105,7 @@ export default function ContactCard() {
               className={`shrink-0 p-3.5 rounded-xl border transition-all duration-200 shadow-sm active:scale-95 flex items-center justify-center ${
                 isCopied
                   ? "bg-emerald-500 border-emerald-500 text-white shadow-emerald-200 dark:shadow-none"
-                  : "bg-white dark:bg-white/5 border-gray-200 dark:border-gray-700 text-gray-500 hover:border-emerald-400 hover:text-emerald-600"
+                  : "bg-white/5 border-gray-700 text-gray-500 hover:border-emerald-400 hover:text-emerald-600"
               }`}
               aria-label="Copy Link"
             >
@@ -128,7 +128,7 @@ export default function ContactCard() {
         </div>
       </div>
 
-      <div className="w-full md:w-2/3 bg-gray-50 dark:bg-white/5 p-4 md:p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-center">
+      <div className="w-full md:w-2/3 bg-white/5 p-4 md:p-6 rounded-2xl border border-gray-800 shadow-sm flex flex-col justify-center">
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <div>
             <label className="block text-[10px] md:text-xs font-bold text-gray-500 uppercase mb-1 ml-1">
@@ -140,7 +140,7 @@ export default function ContactCard() {
               value={formData.name}
               onChange={handleChange}
               placeholder="Your Name"
-              className="w-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none"
+              className="w-full bg-black border border-gray-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-white placeholder-gray-600"
               required
             />
           </div>
@@ -155,7 +155,7 @@ export default function ContactCard() {
               value={formData.email}
               onChange={handleChange}
               placeholder="you@example.com"
-              className="w-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none"
+              className="w-full bg-black border border-gray-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-white placeholder-gray-600"
               required
             />
           </div>
@@ -170,7 +170,7 @@ export default function ContactCard() {
               onChange={handleChange}
               rows={3}
               placeholder="Hello Naira..."
-              className="w-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none resize-none"
+              className="w-full bg-black border border-gray-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none resize-none text-white placeholder-gray-600"
               required
             ></textarea>
           </div>

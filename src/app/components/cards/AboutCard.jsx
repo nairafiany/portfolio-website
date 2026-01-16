@@ -160,13 +160,13 @@ export default function AboutCard() {
   }, [selectedCert]);
 
   return (
-    <div className="h-full flex flex-col relative">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+    <div className="h-full flex flex-col relative text-white">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-white">
         About Me
       </h2>
 
       <div className="w-full mb-6">
-        <div className="flex w-full items-center justify-between gap-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-xl">
+        <div className="flex w-full items-center justify-between gap-1 bg-gray-800 p-1 rounded-xl">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -177,8 +177,8 @@ export default function AboutCard() {
                 px-0 sm:px-4
                 ${
                   activeTab === tab.id
-                    ? "bg-white dark:bg-[#121212] text-emerald-600 shadow-sm"
-                    : "text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                    ? "bg-[#121212] text-emerald-600 shadow-sm"
+                    : "text-gray-400 hover:text-gray-200"
                 }
               `}
             >
@@ -225,7 +225,7 @@ export default function AboutCard() {
                 {stacksList.map((stack, idx) => (
                   <div
                     key={idx}
-                    className="group relative bg-gray-50 dark:bg-white/5 p-2 rounded-xl border border-gray-200 dark:border-white/10 hover:border-emerald-500 transition-colors"
+                    className="group relative bg-white/5 p-2 rounded-xl border border-white/10 hover:border-emerald-500 transition-colors"
                   >
                     <Image
                       src={stack.src}
@@ -246,7 +246,7 @@ export default function AboutCard() {
 
         {activeTab === "education" && (
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500">
-            <div className="flex flex-row gap-4 items-start bg-gray-50 dark:bg-white/5 p-4 rounded-xl border border-gray-100 dark:border-white/10 hover:border-yellow-500/50 transition-colors">
+            <div className="flex flex-row gap-4 items-start bg-white/5 p-4 rounded-xl border border-white/10 hover:border-yellow-500/50 transition-colors">
               <div className="bg-white p-2 rounded-full shrink-0 shadow-sm">
                 <Image
                   src="/University_of_Indonesia_logo.svg"
@@ -257,14 +257,14 @@ export default function AboutCard() {
                 />
               </div>
               <div>
-                <h3 className="font-bold text-base sm:text-lg dark:text-white leading-tight">
+                <h3 className="font-bold text-base sm:text-lg text-white leading-tight">
                   Universitas Indonesia
                 </h3>
-                <p className="text-emerald-600 font-medium text-xs sm:text-sm mt-0.5">
+                <p className="text-emerald-500 font-medium text-xs sm:text-sm mt-0.5">
                   Undergraduate, Information Systems
                 </p>
                 <p className="text-xs text-gray-500 mt-1">2023 - Present</p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-3 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-400 mt-3 leading-relaxed">
                   3rd-year Information Systems student. Relevant coursework
                   includes Artificial Intelligence & Basic Data Science, Data
                   Communication & Networks, and Enterprise Application
@@ -277,18 +277,18 @@ export default function AboutCard() {
 
         {activeTab === "experience" && (
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500">
-            <div className="bg-gray-50 dark:bg-white/5 p-4 rounded-xl border border-gray-100 dark:border-white/5">
-              <h3 className="font-bold dark:text-white">
+            <div className="bg-white/5 p-4 rounded-xl border border-white/5">
+              <h3 className="font-bold text-white">
                 VPIC of AI Innovation Challenge
               </h3>
               <p className="text-sm text-purple-500 font-medium mb-2">
                 COMPFEST • Mar 2025 - Oct 2025
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 leading-relaxed">
+              <p className="text-xs text-gray-400 mb-2 leading-relaxed">
                 Led the Artificial Intelligence Challenge at Indonesia’s largest
                 student-led IT event (COMPFEST).
               </p>
-              <ul className="text-xs text-gray-500 dark:text-gray-400 list-disc pl-4 space-y-1">
+              <ul className="text-xs text-gray-400 list-disc pl-4 space-y-1">
                 <li>
                   Managed a team of <strong>13 staff members</strong> to execute
                   the competition.
@@ -303,12 +303,12 @@ export default function AboutCard() {
                 </li>
               </ul>
             </div>
-            <div className="bg-gray-50 dark:bg-white/5 p-4 rounded-xl border border-gray-100 dark:border-white/5">
-              <h3 className="font-bold dark:text-white">Teaching Assistant</h3>
+            <div className="bg-white/5 p-4 rounded-xl border border-white/5">
+              <h3 className="font-bold text-white">Teaching Assistant</h3>
               <p className="text-sm text-yellow-500 font-medium mb-2">
                 Discrete Mathematics 1 • Jul 2024 - Dec 2024
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-400">
                 Assisted in grading and tutoring students on fundamental
                 computing concepts.
               </p>
@@ -322,25 +322,23 @@ export default function AboutCard() {
               <div
                 key={idx}
                 onClick={() => setSelectedCert(cert)}
-                className="group relative flex flex-col justify-between bg-gray-50 dark:bg-white/5 p-4 rounded-2xl border border-gray-100 dark:border-white/5 hover:border-emerald-500 hover:-translate-y-1 hover:shadow-lg transition-all cursor-pointer"
+                className="group relative flex flex-col justify-between bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-emerald-500 hover:-translate-y-1 hover:shadow-lg transition-all cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-3">
-                  <div className="p-2 bg-white dark:bg-[#1A1A1A] rounded-lg border border-gray-100 dark:border-white/10 shadow-sm">
+                  <div className="p-2 bg-[#1A1A1A] rounded-lg border border-white/10 shadow-sm">
                     {cert.logo}
                   </div>
-                  <span className="text-[10px] font-mono text-gray-400 bg-black/5 dark:bg-white/5 px-2 py-1 rounded">
+                  <span className="text-[10px] font-mono text-gray-400 bg-white/5 px-2 py-1 rounded">
                     {cert.date}
                   </span>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-gray-900 dark:text-white leading-tight mb-1 group-hover:text-emerald-500 transition-colors line-clamp-2">
+                  <h4 className="text-sm font-bold text-white leading-tight mb-1 group-hover:text-emerald-500 transition-colors line-clamp-2">
                     {cert.title}
                   </h4>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    {cert.issuer}
-                  </p>
+                  <p className="text-xs text-gray-400">{cert.issuer}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-gray-200 dark:border-white/5 flex items-center justify-between">
+                <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
                   <span className="text-[10px] text-gray-400">
                     {cert.length ? cert.length : "Credential"}
                   </span>
@@ -358,7 +356,7 @@ export default function AboutCard() {
       {selectedCert && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
           <div
-            className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.5)_0%,transparent_90%)] backdrop-blur-[2px] animate-in fade-in duration-500"
+            className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.9)_90%)] backdrop-blur-sm animate-in fade-in duration-500 rounded-3xl"
             onClick={() => setSelectedCert(null)}
           ></div>
 
@@ -366,28 +364,21 @@ export default function AboutCard() {
             className="
             relative w-full max-w-5xl 
             h-[50vh] sm:h-auto sm:aspect-video 
-            bg-white dark:bg-[#181818] 
+            bg-[#181818] 
             rounded-2xl shadow-2xl 
             flex flex-col 
             overflow-hidden 
             border border-white/10
-            
-            /* ANIMATION CLASSES */
-            animate-in 
-            fade-in 
-            zoom-in-95 
-            slide-in-from-bottom-8  
-            duration-300            
-            ease-out                
+            animate-in fade-in zoom-in-95 slide-in-from-bottom-8 duration-300 ease-out
           "
           >
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-[#121212]">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-[#121212]">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 flex items-center justify-center bg-white dark:bg-black/50 rounded-lg border border-white/10">
+                <div className="w-8 h-8 flex items-center justify-center bg-black/50 rounded-lg border border-white/10">
                   {selectedCert.logo}
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-gray-900 dark:text-white line-clamp-1">
+                  <h3 className="text-sm font-bold text-white line-clamp-1">
                     {selectedCert.title}
                   </h3>
                   <p className="text-xs text-gray-500">
@@ -414,7 +405,7 @@ export default function AboutCard() {
               </div>
             </div>
 
-            <div className="flex-1 bg-white relative">
+            <div className="flex-1 bg-[#181818] relative">
               {selectedCert.fileType === "pdf" ? (
                 <iframe
                   src={`${selectedCert.embedSrc}#toolbar=0&navpanes=0`}
@@ -441,12 +432,11 @@ export default function AboutCard() {
   );
 }
 
+// Komponen SkillBox juga diperbarui agar permanen Dark Mode
 const SkillBox = ({ icon, title, desc, color }) => (
-  <div className="border border-gray-200 dark:border-gray-700 p-3 sm:p-4 rounded-xl hover:border-emerald-500 transition-colors group bg-white dark:bg-transparent">
+  <div className="border border-gray-700 p-3 sm:p-4 rounded-xl hover:border-emerald-500 transition-colors group bg-white/5">
     <div className={`text-xl sm:text-2xl mb-2 ${color}`}>{icon}</div>
-    <h4 className="font-bold text-sm sm:text-base text-gray-800 dark:text-gray-200">
-      {title}
-    </h4>
+    <h4 className="font-bold text-sm sm:text-base text-gray-200">{title}</h4>
     <p className="text-[10px] sm:text-xs text-gray-500 mt-1 leading-snug">
       {desc}
     </p>
