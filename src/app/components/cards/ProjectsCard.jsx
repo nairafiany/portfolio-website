@@ -173,6 +173,7 @@ const projectsData = [
 export default function ProjectsCard() {
   const containerRef = useRef(null);
 
+  // Scrollbar style locked to dark theme colors
   const iosScrollbarStyle = `
     overflow-y-auto
     scrollbar-thin
@@ -198,7 +199,7 @@ export default function ProjectsCard() {
   };
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col text-white">
       <div className="shrink-0 mb-6 px-1">
         <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
         <p className="text-gray-400 text-sm mt-1">
@@ -213,8 +214,10 @@ export default function ProjectsCard() {
         {projectsData.map((project) => (
           <div
             key={project.id}
+            // Card Style: Locked to Dark Gray Background & Borders
             className="group relative bg-[#181818] border border-white/5 rounded-2xl p-4 flex flex-col sm:flex-row gap-5 hover:border-emerald-500/50 hover:bg-[#1f1f1f] transition-all duration-300"
           >
+            {/* 1. IMAGE / THUMBNAIL SECTION (Left) */}
             <div className="w-full sm:w-64 aspect-video shrink-0 relative rounded-xl overflow-hidden bg-black/50 border border-white/5">
               {project.image ? (
                 <Image
@@ -229,6 +232,7 @@ export default function ProjectsCard() {
                 </div>
               )}
 
+              {/* Mobile Tags Overlay */}
               <div className="absolute top-2 left-2 flex gap-1 sm:hidden">
                 {project.tags.map((tag, i) => (
                   <span

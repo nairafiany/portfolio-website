@@ -306,12 +306,19 @@ export default function AboutCard() {
             <div className="bg-white/5 p-4 rounded-xl border border-white/5">
               <h3 className="font-bold text-white">Teaching Assistant</h3>
               <p className="text-sm text-yellow-500 font-medium mb-2">
-                Discrete Mathematics 1 • Jul 2024 - Dec 2024
+                Discrete Mathematics 1 • Universitas Indonesia (Fasilkom) • Jul
+                2024 - Dec 2024{" "}
               </p>
-              <p className="text-xs text-gray-400">
-                Assisted in grading and tutoring students on fundamental
-                computing concepts.
-              </p>
+              <ul className="text-xs text-gray-400 list-disc pl-4 space-y-1">
+                <li>
+                  Assisted course delivery by supporting lecturers in conducting
+                  tutorials and grading assignments.
+                </li>
+                <li>
+                  Guided students through foundational mathematical concepts
+                  including logic, set theory, and combinatorics.
+                </li>
+              </ul>
             </div>
           </div>
         )}
