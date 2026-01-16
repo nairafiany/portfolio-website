@@ -89,7 +89,7 @@ export default function ContactCard() {
 
         <div className="w-full max-w-[300px] mx-auto md:mx-0">
           <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2.5 flex items-center justify-center md:justify-start gap-1.5">
-            Like my work? Share with a friend! ✨
+            Like my work? Share with a friend!
           </p>
 
           <div className="relative flex items-center gap-2">
