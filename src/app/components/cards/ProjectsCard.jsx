@@ -11,6 +11,7 @@ import {
   FaBrain,
   FaGem,
   FaChartLine,
+  FaTrophy, // Ditambahkan untuk icon Oscars
 } from "react-icons/fa";
 
 const projectsData = [
@@ -168,6 +169,30 @@ const projectsData = [
       },
     ],
   },
+  {
+    id: 10,
+    title: "Oscars Dashboard",
+    description:
+      "Interactive data dashboard tracking the 98th Academy Awards nominations and precursor awards (Golden Globes, Critics Choice). Built with Python & Streamlit.",
+    image: "/images/projects/oscars.png",
+    thumbnailIcon: (
+      <FaTrophy className="w-14 h-14 text-yellow-500/80 drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]" />
+    ),
+    gitUrl: "https://github.com/nairafiany/oscars-dashboard",
+    previewUrl:
+      "https://oscars-dashboard-s5hmnzsgglbtq77eqfbt7y.streamlit.app/",
+    tags: ["Data Analytics", "Visualization"],
+    techStack: [
+      {
+        name: "Python",
+        icon: <FaPython className="w-4 h-4 text-yellow-400" />,
+      },
+      {
+        name: "Streamlit",
+        icon: <FaChartLine className="w-4 h-4 text-red-500" />,
+      },
+    ],
+  },
 ];
 
 export default function ProjectsCard() {
@@ -195,6 +220,7 @@ export default function ProjectsCard() {
       return "Prototype";
     if (url.includes("kaggle")) return "Kaggle";
     if (url.includes("lookerstudio")) return "Dashboard";
+    if (url.includes("streamlit")) return "Dashboard";
     return "Visit";
   };
 
