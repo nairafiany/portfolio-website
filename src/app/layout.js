@@ -24,7 +24,7 @@ export const metadata = {
   },
 
   description:
-    "Portfolio of Naira Shafiqa Afiany, a 3rd-year Information Systems student at Universitas Indonesia specialized in Web Development, System Analysis, and AI.",
+    "Portfolio of Naira Shafiqa Afiany, a 3rd-year Information Systems student at Universitas Indonesia specialized in Web Development, Backend Systems, and AI.",
 
   icons: {
     icon: [
