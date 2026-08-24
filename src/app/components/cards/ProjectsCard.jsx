@@ -198,15 +198,14 @@ const projectsData = [
 export default function ProjectsCard() {
   const containerRef = useRef(null);
 
-  // Scrollbar style locked to dark theme colors
   const iosScrollbarStyle = `
     overflow-y-auto
     scrollbar-thin
     [&::-webkit-scrollbar]:w-1.5
     [&::-webkit-scrollbar-track]:bg-transparent
-    [&::-webkit-scrollbar-thumb]:bg-gray-700
+    [&::-webkit-scrollbar-thumb]:bg-[#8ecfd3]
     [&::-webkit-scrollbar-thumb]:rounded-full
-    hover:[&::-webkit-scrollbar-thumb]:bg-gray-500
+    hover:[&::-webkit-scrollbar-thumb]:bg-[#8e78cc]
   `;
 
   const getLinkIcon = (url) => {
@@ -225,26 +224,27 @@ export default function ProjectsCard() {
   };
 
   return (
-    <div className="h-full flex flex-col text-white">
+    <div className="h-full flex flex-col text-[#29263b]">
       <div className="shrink-0 mb-6 px-1">
-        <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
-        <p className="text-gray-400 text-sm mt-1">
-          A collection of my recent work & experiments.
+        <div className="flex items-end justify-between gap-3">
+        <div><h2 className="text-3xl font-black tracking-tight text-[#29263b]">Things I’ve built</h2>
+        <p className="text-[#5f676b] text-sm mt-1">
+          Ten projects, each with a story and a tiny bit of personality.
         </p>
+        </div><div className="hidden sm:flex flex-col items-center bg-[#ffd66b] border-2 border-[#29263b] rounded-[45%] p-3 rotate-3" aria-hidden="true"><div className="face"><span className="face-eye"/><span className="face-eye"/></div><span className="face-mouth mt-1"/></div></div>
       </div>
 
       <div
         ref={containerRef}
-        className={`flex-1 flex flex-col gap-6 pr-2 pb-32 ${iosScrollbarStyle}`}
+        className={`hover-safe-region flex-1 flex flex-col gap-6 pr-2 pb-32 ${iosScrollbarStyle}`}
       >
         {projectsData.map((project) => (
           <div
             key={project.id}
-            // Card Style: Locked to Dark Gray Background & Borders
-            className="group relative bg-[#181818] border border-white/5 rounded-2xl p-4 flex flex-col sm:flex-row gap-5 hover:border-emerald-500/50 hover:bg-[#1f1f1f] transition-all duration-300"
+            className="readable-card wiggle-card group relative bg-white border-2 border-[#29263b]/20 rounded-[26px_20px_28px_22px] p-4 flex flex-col sm:flex-row gap-5 hover:border-[#29263b] focus-within:border-[#29263b] transition-all duration-300"
           >
             {/* 1. IMAGE / THUMBNAIL SECTION (Left) */}
-            <div className="w-full sm:w-64 aspect-video shrink-0 relative rounded-xl overflow-hidden bg-black/50 border border-white/5">
+            <div className="w-full sm:w-64 aspect-video shrink-0 relative rounded-[18px_14px_20px_15px] overflow-hidden bg-[#e9e2d4] border-2 border-[#29263b]/20">
               {project.image ? (
                 <Image
                   src={project.image}
@@ -253,7 +253,7 @@ export default function ProjectsCard() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-800 to-black text-gray-500 text-xs font-mono">
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#ffe8d6] to-[#d5eff1] text-[#5f676b] text-xs font-mono">
                   {project.thumbnailIcon ? project.thumbnailIcon : "No Image"}
                 </div>
               )}
@@ -275,14 +275,14 @@ export default function ProjectsCard() {
             <div className="flex-1 flex flex-col min-w-0">
               {/* Title & Tags (Desktop) */}
               <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
+                <h3 className="card-title text-lg font-black group-hover:text-[#d9564b] group-focus-within:text-[#d9564b] transition-colors">
                   {project.title}
                 </h3>
                 <div className="hidden sm:flex gap-2 shrink-0">
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="text-[10px] uppercase font-bold px-2 py-1 bg-white/5 text-gray-400 rounded-md border border-white/5"
+                    className="text-[10px] uppercase font-black px-2 py-1 bg-[#fff1ba] text-[#5d536d] rounded-full border border-[#29263b]/20"
                     >
                       {tag}
                     </span>
@@ -291,11 +291,11 @@ export default function ProjectsCard() {
               </div>
 
               {/* Description */}
-              <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-3">
+              <p className="card-muted text-sm leading-relaxed mb-4 line-clamp-3">
                 {project.description}
               </p>
 
-              <div className="mt-auto pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
+              <div className="mt-auto pt-4 border-t-2 border-dashed border-[#29263b]/15 flex flex-wrap items-center justify-between gap-4">
                 {/* Tech Stack Icons */}
                 <div className="flex items-center gap-3">
                   {project.techStack.map((tech, idx) => (
@@ -306,7 +306,7 @@ export default function ProjectsCard() {
                           alt={tech.name}
                           width={18}
                           height={18}
-                          className="opacity-60 group-hover:opacity-100 transition-opacity"
+                          className="opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"
                         />
                       ) : (
                         <div className="opacity-60 group-hover:opacity-100 transition-opacity">
@@ -328,7 +328,7 @@ export default function ProjectsCard() {
                       href={project.gitUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full"
+                      className="playful-button flex items-center gap-2 text-xs font-black text-[#29263b] bg-white px-3 py-1.5"
                     >
                       <FaGithub className="text-sm" />
                       <span>Code</span>
@@ -339,7 +339,7 @@ export default function ProjectsCard() {
                       href={project.previewUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-emerald-400 transition-colors bg-white/5 hover:bg-emerald-500/10 border border-transparent hover:border-emerald-500/20 px-3 py-1.5 rounded-full"
+                      className="playful-button flex items-center gap-2 text-xs font-black text-[#29263b] bg-[#82d9b8] px-3 py-1.5"
                     >
                       {getLinkIcon(project.previewUrl)}
                       <span>{getLinkLabel(project.previewUrl)}</span>

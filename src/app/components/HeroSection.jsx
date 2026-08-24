@@ -7,7 +7,7 @@ import ScrollReveal from "./ScrollReveal";
 
 const TypeAnimation = dynamic(
   () => import("react-type-animation").then((mod) => mod.TypeAnimation),
-  { ssr: false }
+  { ssr: false },
 );
 
 const HeroSection = () => {
@@ -24,7 +24,7 @@ const HeroSection = () => {
               <div className="h-[50px] sm:h-[60px] lg:h-[80px] inline-block">
                 <TypeAnimation
                   sequence={[
-                    "Naira Shafiqa Afiany",
+                    "Naira S. Afiany",
                     2000,
                     "a Web Developer",
                     2000,

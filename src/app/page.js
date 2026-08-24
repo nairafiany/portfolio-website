@@ -15,7 +15,7 @@ export default function Home() {
   }
 
   return (
-    <main className="w-screen h-screen overflow-hidden bg-[#fafafa] dark:bg-[#0a0a0a] relative font-sans text-foreground">
+    <main className="w-screen h-screen overflow-hidden personal-world relative font-sans text-foreground">
       <DottedGrid />
 
       <TimelineCanvas

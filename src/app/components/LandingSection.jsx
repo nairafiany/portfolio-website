@@ -11,7 +11,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
 
   return (
-    <main className="w-screen h-screen overflow-hidden bg-[#0a0a0a] relative font-sans text-foreground">
+    <main className="w-screen h-screen overflow-hidden personal-world relative font-sans text-foreground">
       <DottedGrid />
 
       <TimelineCanvas
