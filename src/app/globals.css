@@ -771,7 +771,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 @keyframes editorial-blink { 0%,35%,70%,100%{scale:1} 52%{scale:1 .18} }
 
 .nav-companion { position:relative; }
-.nav-companion-wrap { isolation:isolate; }
+.nav-companion-wrap { isolation:isolate; display:flex; align-items:center; justify-content:center; }
+.nav-mobile-step { display:none; }
 .nav-lurker {
   position:absolute; z-index:0; right:13px; top:-11px; width:56px; height:24px;
   display:block;
@@ -861,6 +862,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .dock-item { transition:color .2s ease; }
 @media (max-width: 640px) {
   .hover-safe-region { padding-top: 7px; padding-inline: 4px; }
+  .nav-companion-wrap { gap:10px; }
+  .nav-mobile-step {
+    display:grid; place-items:center; flex:0 0 30px; width:30px; height:30px; padding:0;
+    color:#29263b; background:#fffdf7; border:1.5px solid #29263b; border-radius:7px;
+    box-shadow:3px 3px 0 #29263b; font-size:12px; opacity:.82; cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+  }
+  .nav-mobile-step:hover { opacity:1; }
+  .nav-mobile-step:active { transform:translate(2px, 2px); box-shadow:1px 1px 0 #29263b; }
+  .nav-mobile-step:focus-visible { outline:2px solid #e85f52; outline-offset:3px; }
+  .nav-mobile-step:disabled { visibility:hidden; pointer-events:none; }
   .nav-lurker { right:8px; }
   .comic-cover-header { min-height:58px; padding-inline:9px; }
   .comic-cover-header strong { font-size:19px; }

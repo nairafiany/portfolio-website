@@ -3,8 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   FaPlus,
-  FaChevronRight,
-  FaChevronLeft,
   FaMugHot,
   FaLightbulb,
 } from "react-icons/fa6";
@@ -704,36 +702,6 @@ export default function TimelineCanvas({
                     </div>
                   )}
 
-                  {isMobile && (
-                    <>
-                      {index < SECTIONS.length - 1 && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleConnect();
-                          }}
-                          aria-label="Next section"
-                          disabled={isNavigating}
-                          className="absolute bottom-4 right-4 z-50 w-12 h-12 bg-[#82d9b8] border-2 border-[#29263b] rounded-full flex items-center justify-center text-[#29263b] shadow-[3px_3px_0_#29263b] active:scale-90 transition-transform"
-                        >
-                          <FaChevronRight />
-                        </button>
-                      )}
-                      {index > 0 && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handlePrev();
-                          }}
-                          aria-label="Previous section"
-                          disabled={isNavigating}
-                          className="absolute bottom-4 left-4 z-50 w-12 h-12 bg-[#ffd66b] rounded-full flex items-center justify-center text-[#29263b] shadow-[3px_3px_0_#29263b] active:scale-90 transition-transform border-2 border-[#29263b]"
-                        >
-                          <FaChevronLeft />
-                        </button>
-                      )}
-                    </>
-                  )}
                 </>
               )}
             </motion.div>

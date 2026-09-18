@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { HiHome, HiUser, HiCodeBracket, HiEnvelope } from "react-icons/hi2";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 const dockItems = [
   { id: 0, label: "Home", icon: HiHome },
@@ -134,6 +135,16 @@ export default function FloatingDock({ activeSection, onNavigate }) {
         if (!isReactingRef.current) setMascotMood("rest");
       }}
     >
+      <button
+        type="button"
+        onClick={() => onNavigate(activeSection - 1)}
+        aria-label="Previous section"
+        disabled={activeSection === 0}
+        className="nav-mobile-step nav-mobile-step-previous"
+      >
+        <FaChevronLeft aria-hidden="true" />
+      </button>
+
       <motion.button
         type="button"
         onClick={playClickReaction}
@@ -189,6 +200,16 @@ export default function FloatingDock({ activeSection, onNavigate }) {
         );
       })}
       </motion.nav>
+
+      <button
+        type="button"
+        onClick={() => onNavigate(activeSection + 1)}
+        aria-label="Next section"
+        disabled={activeSection === dockItems.length - 1}
+        className="nav-mobile-step nav-mobile-step-next"
+      >
+        <FaChevronRight aria-hidden="true" />
+      </button>
     </div>
   );
 }
