@@ -1,7 +1,13 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { FaPlus, FaChevronRight, FaChevronLeft } from "react-icons/fa6";
+import {
+  FaPlus,
+  FaChevronRight,
+  FaChevronLeft,
+  FaMugHot,
+  FaLightbulb,
+} from "react-icons/fa6";
 
 // Import card components
 import HeroCard from "./cards/HeroCard";
@@ -215,48 +221,258 @@ export default function TimelineCanvas({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="text-center px-5 relative max-w-3xl">
+            <div className="relative mx-auto max-w-5xl px-6 text-center">
+              {/* Eyebrow */}
               <motion.div
-                initial={{ rotate: -8, y: 15, opacity: 0 }}
-                animate={{ rotate: 0, y: 0, opacity: 1 }}
-                transition={{ type: "spring", delay: 0.05 }}
-                className="group mx-auto mb-7 w-24 h-24 bg-[#ffd66b] border-2 border-[#29263b] rounded-[42%_58%_48%_52%] shadow-[6px_7px_0_#29263b] flex flex-col items-center justify-center gap-2"
-                aria-hidden="true"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.1 }}
+                className="mb-6 flex items-center justify-center gap-3"
               >
-                <div className="face text-[#29263b]">
-                  <span className="face-eye" />
-                  <span className="face-eye" />
-                </div>
-                <span className="face-mouth" />
+                <motion.span
+                  initial={{ width: 0 }}
+                  animate={{ width: 28 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                  className="h-[2px] bg-[#29263b]"
+                />
+
+                <span className="text-xs md:text-sm font-black uppercase tracking-[0.2em] text-[#5f676b]">
+                  Backend Developer · Portfolio
+                </span>
+
+                <motion.span
+                  initial={{ width: 0 }}
+                  animate={{ width: 28 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                  className="h-[2px] bg-[#29263b]"
+                />
               </motion.div>
-              <motion.h1
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="text-5xl md:text-7xl font-black text-[#29263b] mb-5 tracking-[-0.055em] leading-[.95]"
+
+              {/* Main heading */}
+              <div className="overflow-hidden pb-2">
+                <motion.h1
+                  initial={{ y: "110%", rotate: 2 }}
+                  animate={{ y: 0, rotate: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.3,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="text-[3.8rem] font-black leading-[0.86] tracking-[-0.07em] text-[#29263b] sm:text-7xl md:text-[6.5rem] lg:text-[7.5rem]"
+                >
+                  Hi, I&apos;m{" "}
+                  <span className="relative inline-block">
+                    Naira.
+                    {/* Hand-drawn underline */}
+                    <motion.span
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{
+                        duration: 0.65,
+                        delay: 1,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className="absolute -bottom-2 left-1 right-0 -z-10 h-[8px] origin-left rotate-[-1deg] rounded-full bg-[#ffd66b]"
+                    />
+                  </span>
+                </motion.h1>
+              </div>
+
+              {/* Description */}
+              <div className="mx-auto mt-9 max-w-2xl overflow-hidden">
+                <motion.p
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.85,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="text-base md:text-xl font-semibold leading-relaxed text-[#5f676b]"
+                >
+                  Software projects, experiments, and things I&apos;m learning.
+                </motion.p>
+
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    duration: 0.55,
+                    delay: 1.05,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="mt-4 flex justify-center"
+                >
+                  <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1.5 rounded-full border border-[#29263b]/15 bg-white/55 px-3 py-2 text-xs font-semibold text-[#737877] shadow-[0_3px_0_rgba(41,38,59,0.08)] backdrop-blur-sm sm:flex-nowrap sm:px-4 sm:text-sm">
+                    <span className="whitespace-nowrap">Powered by</span>
+
+                    <motion.span
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border-[1.5px] border-[#29263b] bg-[#ffd99a] px-2.5 py-1 font-black text-[#29263b] shadow-[2px_2px_0_#29263b]"
+                      animate={
+                        prefersReducedMotion
+                          ? undefined
+                          : {
+                              y: [0, 0, -2, 0],
+                              rotate: [0, 0, -2, 0],
+                            }
+                      }
+                      transition={{
+                        duration: 3.8,
+                        times: [0, 0.58, 0.76, 1],
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      whileHover={
+                        prefersReducedMotion
+                          ? undefined
+                          : { y: -3, rotate: -2, scale: 1.04 }
+                      }
+                    >
+                      <span
+                        className="relative grid h-5 w-5 place-items-center"
+                        aria-hidden="true"
+                      >
+                        <motion.i
+                          className="absolute -top-1 left-[6px] h-2 w-px rounded-full bg-[#8b654d]"
+                          animate={
+                            prefersReducedMotion
+                              ? undefined
+                              : {
+                                  y: [2, -4],
+                                  opacity: [0, 0.75, 0],
+                                  scaleY: [0.45, 1],
+                                }
+                          }
+                          transition={{
+                            duration: 1.55,
+                            repeat: Infinity,
+                            ease: "easeOut",
+                          }}
+                        />
+                        <motion.i
+                          className="absolute -top-1 right-[5px] h-2 w-px rounded-full bg-[#8b654d]"
+                          animate={
+                            prefersReducedMotion
+                              ? undefined
+                              : {
+                                  y: [2, -4],
+                                  opacity: [0, 0.65, 0],
+                                  scaleY: [0.45, 1],
+                                }
+                          }
+                          transition={{
+                            duration: 1.55,
+                            delay: 0.7,
+                            repeat: Infinity,
+                            ease: "easeOut",
+                          }}
+                        />
+                        <FaMugHot className="relative z-10 h-4 w-4" />
+                      </span>
+                      <span>coffee</span>
+                    </motion.span>
+
+                    <span className="font-bold text-[#9a9d9c]">&amp;</span>
+
+                    <motion.span
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border-[1.5px] border-[#29263b] bg-[#fff1a8] px-2.5 py-1 font-black text-[#29263b] shadow-[2px_2px_0_#29263b]"
+                      animate={
+                        prefersReducedMotion
+                          ? undefined
+                          : { y: [0, 0, -2, 0], rotate: [0, 0, 2, 0] }
+                      }
+                      transition={{
+                        duration: 4.2,
+                        delay: 0.5,
+                        times: [0, 0.6, 0.78, 1],
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      whileHover={
+                        prefersReducedMotion
+                          ? undefined
+                          : { y: -3, rotate: 2, scale: 1.04 }
+                      }
+                    >
+                      <span
+                        className="relative grid h-5 w-5 place-items-center"
+                        aria-hidden="true"
+                      >
+                        <motion.span
+                          animate={
+                            prefersReducedMotion
+                              ? undefined
+                              : {
+                                  rotate: [0, 0, -8, 7, 0],
+                                  scale: [1, 1, 1.14, 1.08, 1],
+                                }
+                          }
+                          transition={{
+                            duration: 3.1,
+                            times: [0, 0.52, 0.65, 0.78, 1],
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                          className="flex text-[#aa7800] drop-shadow-[0_0_3px_rgba(255,214,107,0.9)]"
+                        >
+                          <FaLightbulb className="h-4 w-4" />
+                        </motion.span>
+                        <motion.span
+                          className="absolute -right-1 -top-1 text-[9px] leading-none text-[#e39b17]"
+                          animate={
+                            prefersReducedMotion
+                              ? undefined
+                              : {
+                                  opacity: [0, 0, 1, 0],
+                                  scale: [0.3, 0.3, 1.15, 0.4],
+                                  rotate: [-15, -15, 8, 18],
+                                }
+                          }
+                          transition={{
+                            duration: 3.1,
+                            times: [0, 0.5, 0.68, 1],
+                            repeat: Infinity,
+                          }}
+                        >
+                          ✦
+                        </motion.span>
+                      </span>
+                      <span>curiosity</span>
+                    </motion.span>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* CTA */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 1.3,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="mt-10"
               >
-                Hi, I&apos;m Naira.
-              </motion.h1>
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="text-[#5f676b] mb-9 text-base md:text-lg font-medium italic"
-              >
-                Software projects, experiments, and things I&apos;m learning.
-                Powered by coffee and curiosity.
-              </motion.p>
-              <motion.button
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                whileHover={{ scale: 1.03, rotate: -1 }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ delay: 0.6 }}
-                onClick={onStart}
-                className="playful-button px-8 py-4 bg-[#82d9b8] text-[#29263b] font-black text-lg"
-              >
-                Explore <span aria-hidden="true">→</span>
-              </motion.button>
+                <motion.button
+                  onClick={onStart}
+                  whileHover="hover"
+                  whileTap={{ scale: 0.96 }}
+                  className="playful-button group bg-[#82d9b8] px-9 py-4 text-lg font-black text-[#29263b]"
+                >
+                  Explore
+                  <motion.span
+                    variants={{
+                      hover: { x: 5 },
+                    }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                    className="ml-2 inline-block"
+                    aria-hidden="true"
+                  >
+                    →
+                  </motion.span>
+                </motion.button>
+              </motion.div>
             </div>
           </motion.div>
         )}
@@ -344,12 +560,14 @@ export default function TimelineCanvas({
                 duration: prefersReducedMotion ? 0 : 0.52,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className={`
-                relative flex flex-col shrink-0
-                w-[90vw] lg:w-[1000px] h-[80vh] max-h-[700px] 
-                organic-shell ${index === 0 ? "hero-main-card" : ""}
-                ${index === activeSection && hasStarted ? "z-10" : "z-0"}
-              `}
+              className={[
+                "relative flex h-[80vh] max-h-[700px] w-[90vw] shrink-0 flex-col lg:w-[1000px]",
+                "organic-shell",
+                index === 0 ? "hero-main-card" : "",
+                index === activeSection && hasStarted ? "z-10" : "z-0",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               <motion.div
                 animate={{
@@ -371,6 +589,12 @@ export default function TimelineCanvas({
                 {index === 0
                   ? React.cloneElement(SectionComponent, {
                       onContactClick: handleJumpToContact,
+                      onProjectsClick: () => {
+                        if (isNavigating) return;
+                        setTravelDirection(1);
+                        if (!hasStarted) onStart?.();
+                        onSectionChange(2);
+                      },
                     })
                   : SectionComponent}
               </div>

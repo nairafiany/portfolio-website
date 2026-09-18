@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import ToolsSection from "../ToolsSection";
 import {
   FaCode,
   FaSitemap,
@@ -23,24 +24,44 @@ import {
   SiGooglecloud,
 } from "react-icons/si";
 
-const stacksList = [
-  { src: "/stacks/nextjs_icon_dark.svg", alt: "Next.js" },
-  { src: "/stacks/vue.svg", alt: "Vue.js" },
-  { src: "/stacks/tailwindcss.svg", alt: "Tailwind" },
-  { src: "/stacks/django.svg", alt: "Django" },
-  { src: "/stacks/fastapi.svg", alt: "FastAPI" },
-  { src: "/stacks/spring.svg", alt: "Spring Boot" },
-  { icon: <SiDotnet className="text-[#512bd4]" />, alt: ".NET" },
-  { icon: <SiSharp className="text-[#239120]" />, alt: "C#" },
-  { icon: <SiPhp className="text-[#777bb4]" />, alt: "PHP" },
-  { icon: <SiLaravel className="text-[#ff2d20]" />, alt: "Laravel" },
-  { src: "/stacks/flutter.svg", alt: "Flutter" },
-  { src: "/stacks/docker.svg", alt: "Docker" },
-  { src: "/stacks/postgresql.svg", alt: "PostgreSQL" },
-  { src: "/stacks/aws_light.svg", alt: "AWS" },
-  { icon: <SiGooglecloud className="text-[#4285f4]" />, alt: "GCP" },
-  { src: "/stacks/figma.svg", alt: "Figma" },
-  { src: "/stacks/openai.svg", alt: "OpenAI Platform" },
+const technologyGroups = [
+  {
+    name: "Backend",
+    technologies: [
+      { src: "/stacks/spring.svg", name: "Spring Boot" },
+      { icon: <SiDotnet className="text-[#512bd4]" />, name: ".NET" },
+      { icon: <SiSharp className="text-[#239120]" />, name: "C#" },
+      { src: "/stacks/django.svg", name: "Django" },
+      { src: "/stacks/fastapi.svg", name: "FastAPI" },
+      { icon: <SiLaravel className="text-[#ff2d20]" />, name: "Laravel" },
+      { icon: <SiPhp className="text-[#777bb4]" />, name: "PHP" },
+    ],
+  },
+  {
+    name: "Frontend & Mobile",
+    technologies: [
+      { src: "/stacks/nextjs_icon_dark.svg", name: "Next.js" },
+      { src: "/stacks/vue.svg", name: "Vue.js" },
+      { src: "/stacks/tailwindcss.svg", name: "Tailwind CSS" },
+      { src: "/stacks/flutter.svg", name: "Flutter" },
+    ],
+  },
+  {
+    name: "Data & Infrastructure",
+    technologies: [
+      { src: "/stacks/postgresql.svg", name: "PostgreSQL" },
+      { src: "/stacks/docker.svg", name: "Docker" },
+      { src: "/stacks/aws_light.svg", name: "AWS" },
+      { icon: <SiGooglecloud className="text-[#4285f4]" />, name: "Google Cloud" },
+    ],
+  },
+  {
+    name: "Tools",
+    technologies: [
+      { src: "/stacks/figma.svg", name: "Figma" },
+      { src: "/stacks/openai.svg", name: "OpenAI" },
+    ],
+  },
 ];
 
 const certificatesList = [
@@ -255,66 +276,34 @@ export default function AboutCard() {
       >
         {activeTab === "skills" && (
           <div className="space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="capability-grid">
               <SkillBox
                 icon={<FaCode />}
-                title="Development"
-                desc="Building robust web & mobile apps."
-                color="text-emerald-500"
-              />
-              <SkillBox
-                icon={<FaSitemap />}
-                title="System Analysis"
-                desc="Designing scalable architectures."
-                color="text-blue-500"
+                title="Backend Engineering"
+                desc="Building APIs, integrations, backend services, and application logic for reliable software systems."
+                variant="backend"
+                prominent
               />
               <SkillBox
                 icon={<FaDatabase />}
-                title="Data & Infra"
-                desc="Managing data and cloud deployment."
-                color="text-orange-500"
+                title="Data & Infrastructure"
+                desc="Working with databases, containers, and cloud environments to support application delivery."
+                variant="data"
+              />
+              <SkillBox
+                icon={<FaSitemap />}
+                title="Product Engineering"
+                desc="Turning product requirements into functional end-to-end web applications when needed."
+                variant="product"
               />
               <SkillBox
                 icon={<FaBrain />}
-                title="AI & ML"
-                desc="Integrating intelligent solutions."
-                color="text-[#277b8b]"
+                title="AI Integration"
+                desc="Integrating AI capabilities into software features and user workflows."
+                variant="ai"
               />
             </div>
-            <div>
-              <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">
-                Tools & Technologies
-              </h3>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                {stacksList.map((stack, idx) => (
-                  <div
-                    key={idx}
-                    className="group relative z-0 hover:z-50 focus-within:z-50 bg-white p-2.5 rounded-[16px_13px_17px_14px] border-2 border-[#29263b]/15 hover:border-[#29263b] hover:-translate-y-1 hover:rotate-2 transition-all"
-                  >
-                    {stack.src ? (
-                      <Image
-                        src={stack.src}
-                        alt={stack.alt}
-                        width={28}
-                        height={28}
-                        className="w-6 h-6 sm:w-7 sm:h-7 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
-                      />
-                    ) : (
-                      <span
-                        className="text-2xl sm:text-[28px] opacity-80 group-hover:opacity-100 transition-opacity"
-                        role="img"
-                        aria-label={stack.alt}
-                      >
-                        {stack.icon}
-                      </span>
-                    )}
-                    <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-[#263238] text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-sm">
-                      {stack.alt}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ToolsSection groups={technologyGroups} />
           </div>
         )}
 
@@ -540,13 +529,24 @@ export default function AboutCard() {
   );
 }
 
-// Komponen SkillBox juga diperbarui agar permanen Dark Mode
-const SkillBox = ({ icon, title, desc, color }) => (
-  <div className="wiggle-card border-2 border-[#29263b]/20 p-3 sm:p-4 rounded-[24px_18px_26px_20px] hover:border-[#29263b] group bg-white">
-    <div className={`text-xl sm:text-2xl mb-2 ${color}`}>{icon}</div>
-    <h4 className="font-black text-sm sm:text-base text-[#29263b]">{title}</h4>
-    <p className="text-[10px] sm:text-xs text-[#5f676b] mt-1 leading-snug">
-      {desc}
-    </p>
+const SkillBox = ({ icon, title, desc, variant, prominent = false }) => (
+  <div className="capability-card group" data-variant={variant} data-prominent={prominent || undefined}>
+    <div className="capability-halftone" aria-hidden="true" />
+    <div className="capability-skyline" aria-hidden="true" />
+    <div className="capability-spark capability-spark-one" aria-hidden="true">✦</div>
+    <div className="capability-spark capability-spark-two" aria-hidden="true">✧</div>
+    <div className="capability-copy">
+      <div className="capability-badge" aria-hidden="true">{icon}</div>
+      <h4>{title}</h4>
+      {prominent && <span className="capability-focus-label">Primary Focus</span>}
+      <p>{desc}</p>
+    </div>
+    <CapabilityMotif variant={variant} />
+  </div>
+);
+
+const CapabilityMotif = ({ variant }) => (
+  <div className={`capability-motif motif-${variant}`} aria-hidden="true">
+    <span /><span /><span /><span /><span /><span />
   </div>
 );

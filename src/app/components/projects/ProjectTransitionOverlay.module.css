@@ -1,0 +1,92 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scan {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: -8px;
+  height: 8px;
+  border-top: 1px solid rgba(41, 38, 59, 0.38);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 214, 107, 0.38);
+  box-shadow: 0 0 20px rgba(41, 38, 59, 0.16);
+  animation: scan-page var(--motion-page, 560ms) var(--ease-mechanical, ease) both;
+}
+
+.readout {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid #29263b;
+  border-radius: 5px 3px 6px 4px;
+  background: rgba(255, 253, 247, 0.94);
+  box-shadow: 3px 3px 0 #29263b;
+  color: #29263b;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: readout-in var(--motion-ui, 280ms) var(--ease-mechanical, ease) both;
+}
+
+.number {
+  display: grid;
+  min-width: 25px;
+  height: 20px;
+  place-items: center;
+  border: 1px solid rgba(41, 38, 59, 0.48);
+  background: #29263b;
+  color: #fff1ba;
+  font-size: 9px;
+}
+
+.lights { display: inline-flex; gap: 3px; }
+
+.lights i {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border: 1px solid #29263b;
+  background: #82d9b8;
+  animation: status-light 420ms steps(2, end) both;
+}
+
+.lights i:nth-child(2) { animation-delay: 70ms; }
+.lights i:nth-child(3) { animation-delay: 140ms; }
+
+@keyframes scan-page {
+  from { transform: translateY(0); opacity: 0; }
+  12% { opacity: 0.8; }
+  88% { opacity: 0.55; }
+  to { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes readout-in {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes status-light {
+  from { background: transparent; }
+  to { background: #82d9b8; }
+}
+
+@media (max-width: 640px) {
+  .readout { right: 13px; bottom: 14px; max-width: calc(100% - 26px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { display: none; }
+}

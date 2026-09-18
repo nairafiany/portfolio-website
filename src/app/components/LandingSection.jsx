@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TimelineCanvas from "./TimelineCanvas";
 import FloatingDock from "./FloatingDock";
 import DottedGrid from "./DottedGrid";
@@ -9,6 +9,18 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Home() {
   const [hasStarted, setHasStarted] = useState(false);
   const [activeSection, setActiveSection] = useState(0);
+
+  useEffect(() => {
+    const openRequestedSection = () => {
+      const requestedSection = new URLSearchParams(window.location.search).get("section");
+      if (requestedSection === "projects") {
+        setActiveSection(2);
+        setHasStarted(true);
+      }
+    };
+    const frame = window.requestAnimationFrame(openRequestedSection);
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   return (
     <main className="w-screen h-screen overflow-hidden personal-world relative font-sans text-foreground">

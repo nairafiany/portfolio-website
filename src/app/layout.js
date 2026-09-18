@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import ProjectTransitionOverlay from "./components/projects/ProjectTransitionOverlay";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -102,6 +103,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <ProjectTransitionOverlay />
       </body>
     </html>
   );
