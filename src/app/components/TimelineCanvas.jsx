@@ -1,11 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import {
-  FaPlus,
-  FaMugHot,
-  FaLightbulb,
-} from "react-icons/fa6";
+import { FaPlus, FaMugHot, FaLightbulb } from "react-icons/fa6";
 
 // Import card components
 import HeroCard from "./cards/HeroCard";
@@ -226,25 +222,7 @@ export default function TimelineCanvas({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.1 }}
                 className="mb-6 flex items-center justify-center gap-3"
-              >
-                <motion.span
-                  initial={{ width: 0 }}
-                  animate={{ width: 28 }}
-                  transition={{ duration: 0.5, delay: 0.15 }}
-                  className="h-[2px] bg-[#29263b]"
-                />
-
-                <span className="text-xs md:text-sm font-black uppercase tracking-[0.2em] text-[#5f676b]">
-                  Backend Developer · Portfolio
-                </span>
-
-                <motion.span
-                  initial={{ width: 0 }}
-                  animate={{ width: 28 }}
-                  transition={{ duration: 0.5, delay: 0.15 }}
-                  className="h-[2px] bg-[#29263b]"
-                />
-              </motion.div>
+              ></motion.div>
 
               {/* Main heading */}
               <div className="overflow-hidden pb-2">
@@ -701,7 +679,6 @@ export default function TimelineCanvas({
                       </motion.button>
                     </div>
                   )}
-
                 </>
               )}
             </motion.div>
