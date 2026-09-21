@@ -283,66 +283,25 @@ export default function TimelineCanvas({
                     <span className="whitespace-nowrap">Powered by</span>
 
                     <motion.span
-                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border-[1.5px] border-[#29263b] bg-[#ffd99a] px-2.5 py-1 font-black text-[#29263b] shadow-[2px_2px_0_#29263b]"
-                      animate={
-                        prefersReducedMotion
-                          ? undefined
-                          : {
-                              y: [0, 0, -2, 0],
-                              rotate: [0, 0, -2, 0],
-                            }
-                      }
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border-[1.5px] border-[#29263b] bg-[#ffd99a] px-2.5 py-1 font-black text-[#29263b] shadow-[1px_1px_0_#29263b]"
                       transition={{
-                        duration: 3.8,
-                        times: [0, 0.58, 0.76, 1],
-                        repeat: Infinity,
-                        ease: "easeInOut",
+                        type: "spring",
+                        stiffness: 420,
+                        damping: 22,
+                        mass: 0.55,
                       }}
                       whileHover={
                         prefersReducedMotion
                           ? undefined
-                          : { y: -3, rotate: -2, scale: 1.04 }
+                          : { y: -2, rotate: -2 }
                       }
                     >
                       <span
                         className="relative grid h-5 w-5 place-items-center"
                         aria-hidden="true"
                       >
-                        <motion.i
-                          className="absolute -top-1 left-[6px] h-2 w-px rounded-full bg-[#8b654d]"
-                          animate={
-                            prefersReducedMotion
-                              ? undefined
-                              : {
-                                  y: [2, -4],
-                                  opacity: [0, 0.75, 0],
-                                  scaleY: [0.45, 1],
-                                }
-                          }
-                          transition={{
-                            duration: 1.55,
-                            repeat: Infinity,
-                            ease: "easeOut",
-                          }}
-                        />
-                        <motion.i
-                          className="absolute -top-1 right-[5px] h-2 w-px rounded-full bg-[#8b654d]"
-                          animate={
-                            prefersReducedMotion
-                              ? undefined
-                              : {
-                                  y: [2, -4],
-                                  opacity: [0, 0.65, 0],
-                                  scaleY: [0.45, 1],
-                                }
-                          }
-                          transition={{
-                            duration: 1.55,
-                            delay: 0.7,
-                            repeat: Infinity,
-                            ease: "easeOut",
-                          }}
-                        />
+                        <i className="absolute -top-1 left-[6px] h-2 w-px rounded-full bg-[#8b654d]" />
+                        <i className="absolute -top-1 right-[5px] h-2 w-px rounded-full bg-[#8b654d]" />
                         <FaMugHot className="relative z-10 h-4 w-4" />
                       </span>
                       <span>coffee</span>
@@ -351,67 +310,29 @@ export default function TimelineCanvas({
                     <span className="font-bold text-[#9a9d9c]">&amp;</span>
 
                     <motion.span
-                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border-[1.5px] border-[#29263b] bg-[#fff1a8] px-2.5 py-1 font-black text-[#29263b] shadow-[2px_2px_0_#29263b]"
-                      animate={
-                        prefersReducedMotion
-                          ? undefined
-                          : { y: [0, 0, -2, 0], rotate: [0, 0, 2, 0] }
-                      }
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border-[1.5px] border-[#29263b] bg-[#fff1a8] px-2.5 py-1 font-black text-[#29263b] shadow-[1px_1px_0_#29263b]"
                       transition={{
-                        duration: 4.2,
-                        delay: 0.5,
-                        times: [0, 0.6, 0.78, 1],
-                        repeat: Infinity,
-                        ease: "easeInOut",
+                        type: "spring",
+                        stiffness: 420,
+                        damping: 22,
+                        mass: 0.55,
                       }}
                       whileHover={
                         prefersReducedMotion
                           ? undefined
-                          : { y: -3, rotate: 2, scale: 1.04 }
+                          : { y: -2, rotate: 2 }
                       }
                     >
                       <span
                         className="relative grid h-5 w-5 place-items-center"
                         aria-hidden="true"
                       >
-                        <motion.span
-                          animate={
-                            prefersReducedMotion
-                              ? undefined
-                              : {
-                                  rotate: [0, 0, -8, 7, 0],
-                                  scale: [1, 1, 1.14, 1.08, 1],
-                                }
-                          }
-                          transition={{
-                            duration: 3.1,
-                            times: [0, 0.52, 0.65, 0.78, 1],
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                          className="flex text-[#aa7800] drop-shadow-[0_0_3px_rgba(255,214,107,0.9)]"
-                        >
+                        <span className="flex text-[#aa7800] drop-shadow-[0_0_3px_rgba(255,214,107,0.9)]">
                           <FaLightbulb className="h-4 w-4" />
-                        </motion.span>
-                        <motion.span
-                          className="absolute -right-1 -top-1 text-[9px] leading-none text-[#e39b17]"
-                          animate={
-                            prefersReducedMotion
-                              ? undefined
-                              : {
-                                  opacity: [0, 0, 1, 0],
-                                  scale: [0.3, 0.3, 1.15, 0.4],
-                                  rotate: [-15, -15, 8, 18],
-                                }
-                          }
-                          transition={{
-                            duration: 3.1,
-                            times: [0, 0.5, 0.68, 1],
-                            repeat: Infinity,
-                          }}
-                        >
+                        </span>
+                        <span className="absolute -right-1 -top-1 text-[9px] leading-none text-[#e39b17]">
                           ✦
-                        </motion.span>
+                        </span>
                       </span>
                       <span>curiosity</span>
                     </motion.span>

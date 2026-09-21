@@ -531,22 +531,11 @@ export default function AboutCard() {
 
 const SkillBox = ({ icon, title, desc, variant, prominent = false }) => (
   <div className="capability-card group" data-variant={variant} data-prominent={prominent || undefined}>
-    <div className="capability-halftone" aria-hidden="true" />
-    <div className="capability-skyline" aria-hidden="true" />
-    <div className="capability-spark capability-spark-one" aria-hidden="true">✦</div>
-    <div className="capability-spark capability-spark-two" aria-hidden="true">✧</div>
     <div className="capability-copy">
       <div className="capability-badge" aria-hidden="true">{icon}</div>
       <h4>{title}</h4>
       {prominent && <span className="capability-focus-label">Primary Focus</span>}
       <p>{desc}</p>
     </div>
-    <CapabilityMotif variant={variant} />
-  </div>
-);
-
-const CapabilityMotif = ({ variant }) => (
-  <div className={`capability-motif motif-${variant}`} aria-hidden="true">
-    <span /><span /><span /><span /><span /><span />
   </div>
 );
