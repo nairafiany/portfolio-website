@@ -248,6 +248,23 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   margin: -5px -6px -7px;
 }
 
+/* One horizontal sizing context for the About navigation and every tab panel. */
+.about-inner {
+  box-sizing: border-box;
+  min-width: 0;
+}
+.about-navigation,
+.about-content {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+}
+.about-content {
+  padding-top: 8px;
+  scroll-padding-top: 8px;
+  scrollbar-gutter: stable;
+}
+
 /* Readable light-card hierarchy: hover/focus may accent, never reveal content. */
 .readable-card {
   background: #fffdf7;
@@ -852,6 +869,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .dock-item { transition:color .2s ease; }
 @media (max-width: 640px) {
   .hover-safe-region { padding-top: 7px; padding-inline: 4px; }
+  .about-content { padding-top: 7px; scroll-padding-top: 7px; }
   .nav-companion-wrap { gap:10px; }
   .nav-mobile-step {
     display:grid; place-items:center; flex:0 0 30px; width:30px; height:30px; padding:0;

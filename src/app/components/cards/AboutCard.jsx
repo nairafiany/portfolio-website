@@ -222,12 +222,13 @@ export default function AboutCard() {
         A little about me
       </h2>
 
-      <div className="hover-safe-inline w-full mb-6">
-        <div
-          role="tablist"
-          aria-label="About Naira"
-          className="about-tablist grid grid-cols-2 sm:flex w-full items-stretch justify-between gap-1.5 bg-[#eee9dc] p-1.5 rounded-[20px] border-2 border-[#263238]/15"
-        >
+      <div className="about-inner flex min-h-0 w-full flex-1 flex-col">
+        <div className="about-navigation w-full mb-6">
+          <div
+            role="tablist"
+            aria-label="About Naira"
+            className="about-tablist grid grid-cols-2 sm:flex w-full items-stretch justify-between gap-1.5 bg-[#eee9dc] p-1.5 rounded-[20px] border-2 border-[#263238]/15"
+          >
           {tabs.map((tab) => {
             const TabIcon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -266,14 +267,14 @@ export default function AboutCard() {
               </button>
             );
           })}
+          </div>
         </div>
-      </div>
 
-      <div
-        id={`about-panel-${activeTab}`}
-        role="tabpanel"
-        className="hover-safe-region flex-1 overflow-y-auto pr-1 sm:pr-2 custom-scrollbar pb-10"
-      >
+        <div
+          id={`about-panel-${activeTab}`}
+          role="tabpanel"
+          className="about-content w-full flex-1 overflow-y-auto custom-scrollbar pb-10"
+        >
         {activeTab === "skills" && (
           <div className="space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
             <div className="capability-grid">
@@ -454,6 +455,7 @@ export default function AboutCard() {
             ))}
           </div>
         )}
+        </div>
       </div>
 
       {selectedCert && (
