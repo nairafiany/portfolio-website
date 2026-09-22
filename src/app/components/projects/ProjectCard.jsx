@@ -71,8 +71,6 @@ export default function ProjectCard({ project }) {
           <span className="sr-only">View {project.title} case study</span>
         </TransitionLink>
 
-        <span className={styles.registrationMark} aria-hidden="true">⌜</span>
-
         <div className={styles.mediaFrame}>
           {project.thumbnail ? (
             <Image
@@ -137,7 +135,6 @@ export default function ProjectCard({ project }) {
             >
               <Icon className={styles.tabIcon} aria-hidden="true" />
               <span className={styles.tabLabel}>{label}</span>
-              <span className={styles.tabArrow} aria-hidden="true">→</span>
             </a>
           ))}
         </nav>

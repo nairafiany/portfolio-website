@@ -7,13 +7,13 @@ const groupedProjects = groupProjectsByYear();
 
 export default function ProjectsCard() {
   const iosScrollbarStyle = `
+    overflow-x-hidden
     overflow-y-auto
     scrollbar-thin
     [&::-webkit-scrollbar]:w-1.5
     [&::-webkit-scrollbar-track]:bg-transparent
     [&::-webkit-scrollbar-thumb]:bg-[#8ecfd3]
     [&::-webkit-scrollbar-thumb]:rounded-full
-    hover:[&::-webkit-scrollbar-thumb]:bg-[#8e78cc]
   `;
 
   return (
