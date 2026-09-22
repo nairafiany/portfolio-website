@@ -1,5 +1,39 @@
+.stack {
+  position: relative;
+  isolation: isolate;
+  padding-right: 66px;
+}
+
+.stack[data-action-count="0"] { padding-right: 0; }
+
+.paperLayer {
+  position: absolute;
+  pointer-events: none;
+  border: 1.5px solid rgba(41, 38, 59, 0.18);
+  background: #faf6ed;
+  transition: transform var(--motion-ui, 280ms) var(--ease-mechanical, ease);
+}
+
+.paperLayerBack {
+  inset: 5px 61px -5px 5px;
+  z-index: 0;
+  border-radius: 25px 19px 29px 23px;
+  background: #f2eadc;
+}
+
+.paperLayerMiddle {
+  inset: 3px 63px -3px 3px;
+  z-index: 1;
+  border-radius: 26px 20px 28px 22px;
+  background: #fffaf0;
+}
+
+.stack[data-action-count="0"] .paperLayerBack { right: -5px; }
+.stack[data-action-count="0"] .paperLayerMiddle { right: -3px; }
+
 .card {
   position: relative;
+  z-index: 4;
   isolation: isolate;
   display: grid;
   grid-template-columns: 256px minmax(0, 1fr);
@@ -14,6 +48,12 @@
     border-color var(--motion-fast, 180ms) ease,
     box-shadow var(--motion-ui, 280ms) var(--ease-mechanical, ease);
 }
+
+.stack:hover .paperLayerBack,
+.stack:focus-within .paperLayerBack { transform: translate(2px, 2px) rotate(0.15deg); }
+
+.stack:hover .paperLayerMiddle,
+.stack:focus-within .paperLayerMiddle { transform: translate(1px, 1px); }
 
 .card:hover,
 .card:focus-within {
@@ -278,37 +318,107 @@
 .card:hover .technologies,
 .card:focus-within .technologies { transform: translateY(-1px); }
 
-.footerRule {
+.actionTabs {
+  position: absolute;
+  top: 14px;
+  right: 0;
+  bottom: 14px;
+  z-index: 3;
   display: flex;
-  align-items: center;
+  width: 78px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
   gap: 8px;
-  height: 14px;
 }
 
-.footerRule::before {
-  content: "TECH / ACTION";
-  color: rgba(41, 38, 59, 0.38);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 6px;
-  font-weight: 850;
-  letter-spacing: 0.12em;
-}
+.stack[data-action-count="1"] .actionTabs { justify-content: center; }
 
-.footerRule span {
-  flex: 1;
-  border-top: 1px dashed rgba(41, 38, 59, 0.17);
-}
+.stack[data-action-count="1"] .actionTab { height: 58%; }
 
-.actions {
-  position: relative;
-  z-index: 20;
+.stack[data-action-count="2"] .actionTab { height: calc(50% - 4px); }
+
+.stack[data-action-count="3"] .actionTab { height: calc(33.333% - 6px); }
+
+.actionTab {
+  --tab-offset: calc(var(--tab-order, 0) * 3px);
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  pointer-events: none;
+  width: calc(70px - var(--tab-offset));
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  padding: 10px 8px 9px 23px;
+  border: 1.5px solid rgba(41, 38, 59, 0.38);
+  border-left: 0;
+  border-radius: 0 13px 13px 0;
+  box-shadow: 2px 3px 0 rgba(41, 38, 59, 0.09);
+  color: #29263b;
+  text-decoration: none;
+  transform: translateX(calc(-8px + var(--tab-offset)));
+  transition:
+    transform 300ms var(--ease-mechanical, ease),
+    background var(--motion-fast, 180ms) ease,
+    box-shadow var(--motion-fast, 180ms) ease;
 }
+
+.actionTab:nth-child(2) { border-radius: 0 10px 14px 0; }
+.actionTab:nth-child(3) { border-radius: 0 14px 11px 0; }
+
+.code { background: #fffaf0; }
+.live { background: #dff5ea; }
+.dashboard { background: #e6edff; }
+
+.actionTab:hover,
+.actionTab:focus-visible {
+  transform: translateX(calc(var(--tab-offset) + 1px));
+  box-shadow: 3px 4px 0 rgba(41, 38, 59, 0.14);
+  outline: none;
+}
+
+.actionTab:focus-visible { outline: 3px solid #ff7f6e; outline-offset: 2px; }
+.code:hover, .code:focus-visible { background: #fff3d7; }
+.live:hover, .live:focus-visible { background: #c9eddd; }
+.dashboard:hover, .dashboard:focus-visible { background: #d4defb; }
+
+.tabIcon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  transition: transform var(--motion-fast, 180ms) var(--ease-mechanical, ease);
+}
+
+.tabLabel {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.tabArrow {
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+  transition: transform var(--motion-fast, 180ms) var(--ease-mechanical, ease);
+}
+
+.actionTab:hover .tabIcon,
+.actionTab:focus-visible .tabIcon,
+.actionTab:hover .tabArrow,
+.actionTab:focus-visible .tabArrow { transform: translateX(2px); }
 
 @media (max-width: 640px) {
+  .stack {
+    padding-right: 0;
+    padding-bottom: 42px;
+  }
+
+  .paperLayerBack { inset: 5px -4px 37px 5px; }
+  .paperLayerMiddle { inset: 3px -2px 39px 3px; }
+
   .card {
     grid-template-columns: 1fr;
     gap: 15px;
@@ -316,7 +426,47 @@
   }
 
   .description { margin-top: 9px; }
-  .actions { gap: 5px; }
+
+  .actionTabs {
+    top: auto;
+    right: 10px;
+    bottom: 0;
+    left: 10px;
+    width: auto;
+    height: 50px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 7px;
+  }
+
+  .stack[data-action-count="1"] .actionTabs { justify-content: flex-end; }
+
+  .stack[data-action-count="2"] .actionTab,
+  .stack[data-action-count="3"] .actionTab,
+  .stack[data-action-count="1"] .actionTab,
+  .actionTab {
+    width: auto;
+    height: 45px;
+    min-height: 45px;
+    padding: 17px 11px 8px;
+    border: 1.5px solid rgba(41, 38, 59, 0.38);
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+    transform: translateY(-8px);
+  }
+
+  .actionTab:nth-child(2),
+  .actionTab:nth-child(3) { border-radius: 0 0 10px 10px; }
+
+  .actionTab:hover,
+  .actionTab:focus-visible { transform: translateY(0); }
+
+  .tabLabel { writing-mode: initial; transform: none; }
+  .tabArrow { transform: rotate(90deg); }
+
+  .actionTab:hover .tabArrow,
+  .actionTab:focus-visible .tabArrow { transform: translate(0, 2px) rotate(90deg); }
 }
 
 @media (hover: none) {
@@ -326,6 +476,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .card,
+  .paperLayer,
+  .actionTab,
+  .tabIcon,
+  .tabArrow,
   .registrationMark,
   .media,
   .mediaScan,
@@ -348,7 +502,17 @@
   .card:hover .title,
   .card:focus-within .title,
   .card:hover .technologies,
-  .card:focus-within .technologies { transform: none; }
+  .card:focus-within .technologies,
+  .stack:hover .paperLayerBack,
+  .stack:focus-within .paperLayerBack,
+  .stack:hover .paperLayerMiddle,
+  .stack:focus-within .paperLayerMiddle,
+  .actionTab:hover,
+  .actionTab:focus-visible,
+  .actionTab:hover .tabIcon,
+  .actionTab:focus-visible .tabIcon,
+  .actionTab:hover .tabArrow,
+  .actionTab:focus-visible .tabArrow { transform: none; }
 
   .mediaScan { display: none; }
 }

@@ -1,14 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { FaGem } from "react-icons/fa";
+import { FaChartBar, FaExternalLinkAlt, FaGem, FaGithub } from "react-icons/fa";
 import { getProjectNumber } from "@/app/data/projects";
-import {
-  CategoryBadge,
-  ProjectAction,
-  StatusBadge,
-  TechnologyChip,
-} from "./ProjectPrimitives";
+import { CategoryBadge, StatusBadge, TechnologyChip } from "./ProjectPrimitives";
 import TransitionLink from "./TransitionLink";
 import styles from "./ProjectCard.module.css";
 
@@ -38,89 +33,115 @@ function ProjectPlaceholder({ project }) {
 export default function ProjectCard({ project }) {
   const number = getProjectNumber(project.slug);
   const projectHref = `/projects/${project.slug}`;
+  const actions = [
+    project.repositoryUrl && {
+      href: project.repositoryUrl,
+      label: "Code",
+      icon: FaGithub,
+      tone: "code",
+    },
+    project.liveUrl && {
+      href: project.liveUrl,
+      label: project.liveLabel === "Dashboard" ? "Dashboard" : "Live",
+      icon: project.liveLabel === "Dashboard" ? FaChartBar : FaExternalLinkAlt,
+      tone: project.liveLabel === "Dashboard" ? "dashboard" : "live",
+    },
+    project.dashboardUrl && {
+      href: project.dashboardUrl,
+      label: "Dashboard",
+      icon: FaChartBar,
+      tone: "dashboard",
+    },
+  ].filter(Boolean);
 
   return (
-    <article className={`${styles.card} group`}>
-      <TransitionLink
-        href={projectHref}
-        className={styles.overlayLink}
-        aria-label={`View ${project.title} case study`}
-        transitionLabel={project.title}
-        transitionNumber={number}
-        direction="forward"
-      >
-        <span className="sr-only">View {project.title} case study</span>
-      </TransitionLink>
+    <div className={styles.stack} data-action-count={actions.length}>
+      <span className={`${styles.paperLayer} ${styles.paperLayerBack}`} aria-hidden="true" />
+      <span className={`${styles.paperLayer} ${styles.paperLayerMiddle}`} aria-hidden="true" />
 
-      <span className={styles.registrationMark} aria-hidden="true">⌜</span>
+      <article className={`${styles.card} group`}>
+        <TransitionLink
+          href={projectHref}
+          className={styles.overlayLink}
+          aria-label={`View ${project.title} case study`}
+          transitionLabel={project.title}
+          transitionNumber={number}
+          direction="forward"
+        >
+          <span className="sr-only">View {project.title} case study</span>
+        </TransitionLink>
 
-      <div className={styles.mediaFrame}>
-        {project.thumbnail ? (
-          <Image
-            src={project.thumbnail.src}
-            alt={project.thumbnail.alt}
-            fill
-            sizes="(max-width: 640px) 82vw, 256px"
-            className={`${styles.media} ${project.slug === "sikafa" ? styles.sikafaMedia : ""}`}
-            style={{ viewTransitionName: `project-image-${project.slug}` }}
-          />
-        ) : (
-          <ProjectPlaceholder project={project} />
-        )}
-        <span className={styles.mediaScan} aria-hidden="true" />
-      </div>
+        <span className={styles.registrationMark} aria-hidden="true">⌜</span>
 
-      <div className={styles.content}>
-        <header>
-          <p className={styles.index}>
-            <span>{number}</span> / {project.year ?? "Year not listed"}
-          </p>
-          <h3
-            className={styles.title}
-            style={{ viewTransitionName: `project-title-${project.slug}` }}
-          >
-            {project.title}
-          </h3>
-          {(project.status || project.categories.length > 0) && (
-            <div className={styles.badges} aria-label="Project metadata">
-              <StatusBadge status={project.status} />
-              {project.categories.map((category) => (
-                <CategoryBadge key={category}>{category}</CategoryBadge>
+        <div className={styles.mediaFrame}>
+          {project.thumbnail ? (
+            <Image
+              src={project.thumbnail.src}
+              alt={project.thumbnail.alt}
+              fill
+              sizes="(max-width: 640px) 82vw, 256px"
+              className={`${styles.media} ${project.slug === "sikafa" ? styles.sikafaMedia : ""}`}
+              style={{ viewTransitionName: `project-image-${project.slug}` }}
+            />
+          ) : (
+            <ProjectPlaceholder project={project} />
+          )}
+          <span className={styles.mediaScan} aria-hidden="true" />
+        </div>
+
+        <div className={styles.content}>
+          <header>
+            <p className={styles.index}>
+              <span>{number}</span> / {project.year ?? "Year not listed"}
+            </p>
+            <h3
+              className={styles.title}
+              style={{ viewTransitionName: `project-title-${project.slug}` }}
+            >
+              {project.title}
+            </h3>
+            {(project.status || project.categories.length > 0) && (
+              <div className={styles.badges} aria-label="Project metadata">
+                <StatusBadge status={project.status} />
+                {project.categories.map((category) => (
+                  <CategoryBadge key={category}>{category}</CategoryBadge>
+                ))}
+              </div>
+            )}
+          </header>
+
+          <p className={styles.description}>{project.shortDescription}</p>
+
+          <footer className={styles.footer}>
+            <div className={styles.technologies} aria-label="Technology stack">
+              {project.technologies.map((technology) => (
+                <TechnologyChip key={technology.name} technology={technology} />
               ))}
             </div>
-          )}
-        </header>
+          </footer>
+        </div>
+      </article>
 
-        <p className={styles.description}>{project.shortDescription}</p>
-
-        <footer className={styles.footer}>
-          <div className={styles.technologies} aria-label="Technology stack">
-            {project.technologies.map((technology) => (
-              <TechnologyChip key={technology.name} technology={technology} />
-            ))}
-          </div>
-          <div className={styles.footerRule} aria-hidden="true">
-            <span />
-          </div>
-          <div className={styles.actions}>
-            <ProjectAction
-              href={projectHref}
-              label="View case study"
-              kind="case-study"
-              primary
-              transitionLabel={project.title}
-              transitionNumber={number}
-              direction="forward"
-            />
-            {project.repositoryUrl && (
-              <ProjectAction href={project.repositoryUrl} label="Code" kind="code" />
-            )}
-            {project.liveUrl && (
-              <ProjectAction href={project.liveUrl} label={project.liveLabel ?? "Live Demo"} />
-            )}
-          </div>
-        </footer>
-      </div>
-    </article>
+      {actions.length > 0 && (
+        <nav className={styles.actionTabs} aria-label={`${project.title} links`}>
+          {actions.map(({ href, label, icon: Icon, tone }, index) => (
+            <a
+              key={`${label}-${href}`}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.actionTab} ${styles[tone]}`}
+              style={{ "--tab-order": index }}
+              aria-label={`${label} for ${project.title} (opens in a new tab)`}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <Icon className={styles.tabIcon} aria-hidden="true" />
+              <span className={styles.tabLabel}>{label}</span>
+              <span className={styles.tabArrow} aria-hidden="true">→</span>
+            </a>
+          ))}
+        </nav>
+      )}
+    </div>
   );
 }
