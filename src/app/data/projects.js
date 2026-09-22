@@ -335,7 +335,7 @@ export const projects = [
   {
     slug: "diamond-analytics",
     title: "Diamond Analytics",
-    year: null,
+    year: 2025,
     shortDescription:
       "Classification, prediction, and clustering models for estimating diamond prices and visual quality.",
     categories: ["Data Science", "AI"],

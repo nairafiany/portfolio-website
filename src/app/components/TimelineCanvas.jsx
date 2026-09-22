@@ -213,14 +213,14 @@ export default function TimelineCanvas({
             className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#f7f3e9]/90 backdrop-blur-md pointer-events-auto"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="relative mx-auto max-w-5xl px-6 text-center">
               {/* Eyebrow */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.1 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
                 className="mb-6 flex items-center justify-center gap-3"
               ></motion.div>
 
@@ -230,8 +230,8 @@ export default function TimelineCanvas({
                   initial={{ y: "110%", rotate: 2 }}
                   animate={{ y: 0, rotate: 0 }}
                   transition={{
-                    duration: 0.8,
-                    delay: 0.3,
+                    duration: 1.15,
+                    delay: 0.4,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className="text-[3.8rem] font-black leading-[0.86] tracking-[-0.07em] text-[#29263b] sm:text-7xl md:text-[6.5rem] lg:text-[7.5rem]"
@@ -244,8 +244,8 @@ export default function TimelineCanvas({
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
                       transition={{
-                        duration: 0.65,
-                        delay: 1,
+                        duration: 0.9,
+                        delay: 1.35,
                         ease: [0.16, 1, 0.3, 1],
                       }}
                       className="absolute -bottom-2 left-1 right-0 -z-10 h-[8px] origin-left rotate-[-1deg] rounded-full bg-[#ffd66b]"
@@ -255,26 +255,59 @@ export default function TimelineCanvas({
               </div>
 
               {/* Description */}
-              <div className="mx-auto mt-9 max-w-2xl overflow-hidden">
+              <div className="mx-auto mt-8 max-w-3xl">
                 <motion.p
-                  initial={{ y: 30, opacity: 0 }}
+                  initial={{ y: 12, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{
-                    duration: 0.6,
-                    delay: 0.85,
+                    duration: 0.65,
+                    delay: 1.65,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="text-base md:text-xl font-semibold leading-relaxed text-[#5f676b]"
+                  className="mb-3 text-[0.65rem] font-black uppercase tracking-[0.28em] text-[#858482] sm:text-xs"
                 >
-                  Software projects, experiments, and things I&apos;m learning.
+                  Here you&apos;ll find
                 </motion.p>
+
+                <div className="flex flex-col items-center gap-1 text-xl font-black leading-tight tracking-[-0.025em] text-[#29263b] sm:text-2xl md:text-3xl">
+                  {[
+                    { text: "things I've built", accent: "bg-[#ffd66b]/75", x: -18 },
+                    { text: "problems I've worked on", accent: "bg-[#b8e2d3]/80", x: 18 },
+                    { text: "and what I'm learning along the way.", accent: "bg-[#d8c5f0]/75", x: -18 },
+                  ].map((line, index) => (
+                    <motion.span
+                      key={line.text}
+                      initial={{ x: line.x, y: 12, opacity: 0 }}
+                      animate={{ x: 0, y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 0.8,
+                        delay: 2.05 + index * 0.28,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className="relative block w-fit px-2"
+                    >
+                      <span className="relative z-10">{line.text}</span>
+                      <motion.span
+                        aria-hidden="true"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{
+                          duration: 0.75,
+                          delay: 2.42 + index * 0.28,
+                          ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className={`absolute inset-x-0 bottom-0.5 h-[38%] origin-left -rotate-[0.5deg] rounded-sm ${line.accent}`}
+                      />
+                    </motion.span>
+                  ))}
+                </div>
 
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{
-                    duration: 0.55,
-                    delay: 1.05,
+                    duration: 0.75,
+                    delay: 3.35,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className="mt-4 flex justify-center"
@@ -291,9 +324,7 @@ export default function TimelineCanvas({
                         mass: 0.55,
                       }}
                       whileHover={
-                        prefersReducedMotion
-                          ? undefined
-                          : { y: -2, rotate: -2 }
+                        prefersReducedMotion ? undefined : { y: -2, rotate: -2 }
                       }
                     >
                       <span
@@ -318,9 +349,7 @@ export default function TimelineCanvas({
                         mass: 0.55,
                       }}
                       whileHover={
-                        prefersReducedMotion
-                          ? undefined
-                          : { y: -2, rotate: 2 }
+                        prefersReducedMotion ? undefined : { y: -2, rotate: 2 }
                       }
                     >
                       <span

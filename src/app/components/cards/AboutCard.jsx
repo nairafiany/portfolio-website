@@ -347,6 +347,12 @@ export default function AboutCard() {
               <p className="text-sm text-[#247a60] font-medium mb-2">
                 PT Kalventis Sinergi Farma · Jakarta · Jun 2026 – Present
               </p>
+              <p className="mb-3 border-l-2 border-[#247a60]/45 bg-[#247a60]/[0.06] px-3 py-2 text-xs leading-relaxed text-[#4f5d59]">
+                A Kalbe Group pharmaceutical company, formerly Sanofi Indonesia
+                (PT Aventis Pharma), with 70+ years of operations and a
+                GMP-certified manufacturing facility serving domestic and
+                international markets.
+              </p>
               <ul className="card-muted text-xs list-disc pl-4 space-y-1.5 leading-relaxed">
                 <li>
                   Contributed to the development and rollout of internal
